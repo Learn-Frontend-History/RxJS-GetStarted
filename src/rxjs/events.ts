@@ -16,7 +16,10 @@ document.getElementById(
     OPTIONS.buttons[0].id
 ).addEventListener(
     'click',
-    _ => print('Native', 'click')
+    _ => {
+        console.group()
+        print('Native', 'click')
+    }
 )
 
 //rxjs
@@ -24,5 +27,8 @@ fromEvent(
     document.getElementById(OPTIONS.buttons[1].id),
     'click'
 ).subscribe(
-    _ => print('RxJS', 'click')
+    _ => {
+        console.group()
+        print('RxJS', 'click')
+    }
 )

@@ -16,7 +16,10 @@ document.getElementById(
     OPTIONS.buttons[0].id
 ).addEventListener(
     'click',
-    event => print('Native', `coordinates: ${[event.clientX, event.clientY]}`)
+    event => {
+        console.group()
+        print('Native', `coordinates: ${[event.clientX, event.clientY]}`)
+    }
 )
 
 //rxjs
@@ -26,5 +29,8 @@ fromEvent(
 ).pipe(
     map((event: MouseEvent) => [event.clientX, event.clientY])
 ).subscribe(
-    coordinates => print('RxJS', `coordinates ${coordinates}`)
+    coordinates => {
+        console.group()
+        print('RxJS', `coordinates ${coordinates}`)
+    }
 )

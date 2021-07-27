@@ -20,6 +20,7 @@ document.getElementById(
 ).addEventListener(
     'click',
     _ => {
+        console.group()
         const now = Date.now()
         if (now - lastTime > DURATION) {
             lastTime = now
@@ -35,5 +36,8 @@ fromEvent(
 ).pipe(
     throttleTime(DURATION)
 ).subscribe(
-    _ => print('RxJS', 'click allowed after some time')
+    _ => {
+        console.group()
+        print('RxJS', 'click allowed after some time')
+    }
 )

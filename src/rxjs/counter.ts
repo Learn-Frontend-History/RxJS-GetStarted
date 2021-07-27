@@ -17,7 +17,10 @@ document.getElementById(
     OPTIONS.buttons[0].id
 ).addEventListener(
     'click',
-    _ => print('Native', `${++count}`)
+    _ => {
+        console.group()
+        print('Native', `${++count}`)
+    }
 )
 
 //rxjs
@@ -27,5 +30,8 @@ fromEvent(
 ).pipe(
     scan(count => ++count, 0)
 ).subscribe(
-    count => print('RxJS', count)
+    count => {
+        console.group()
+        print('RxJS', count)
+    }
 )
